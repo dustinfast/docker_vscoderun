@@ -8,11 +8,9 @@
 import sys
 import socket
 
-
 SERVER = '10.0.0.145'   # TCP Server
 CONNECT_PORT = 5001     # TCP Listen port
 MSG_SIZE = 1024         # TCP Msg Size
-
 
 if __name__ == '__main__':
     # Validate single command line arg
