@@ -1,21 +1,23 @@
 # docker_vscoderun
 
-A simple convenience client/server application to open a file in Visual Studio Code on a host from inside a docker container.
+A convenience client/server application to open a file in Visual Studio Code (or your favorite editor) on your host from inside a Linux container's bash prompt.
 
-The file must be in a location mounted on the host (i.e. with `docker build -v HOST_PATH:CONTAINER_PATH`).
-
-This application may be easily modified to open the file in any editor. Simply modify the `OPEN_WITH` constant in `server.py`.
+Note: The file to be opened must be in a location mounted in the container from the host. I.e. with `docker build -v HOST_PATH:CONTAINER_PATH`.
 
 ## Usage
 
-Run the server on the host, and the client in the container. Then, from a terminal within the container, use `code FILENAME` to open the file in the host environment using Visual Studio Code.
+First, clone this repo into your HOST_PATH directory, then 
+modify the "Customizable constants" in `server.py` according to your host environment and preffered editor... I like Visual Studio Code. Then run the server on your host with `python server.py`.
 
-## Security
-For security reasons, you should modify the `ALLOW_CONNS_FROM` constant in `server.py` to include only the IP address of your container. Otherwise, the application will except connections from any IP address.
+From your container's terminal, create an alias for the `code` command with `alias code='/repos/docker_vscoderun/code` (you may want to add this line to your ~/.bashrc to avoid having to do it again in the future).
+
+You can now use `code FILENAME` to open any file in CONTAINER_PATH inside the editor on your host.
+
+Tested functional with Windows 10 host and Ubuntu 14.04 container.
 
 ## Dependencies
 
-* Python
-* Visual Studio Code
+* Python (on host and container)
+* Visual Studio Code (on host)
 
-Note: Visual Studio Code should not be installed in the container. If it is, rename `code.bash` to something that does not conflict with the vscode executable.
+Note: Visual Studio Code should not be installed in the container. If it is, name the `code` alias created in *Usage* to something that does not conflict with the vscode executable `/usr/bin/code`.
