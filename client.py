@@ -19,7 +19,6 @@ if __name__ == '__main__':
         exit()
     filename = sys.argv[1]
 
-    print(filename)
     # Establish socket connection
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect((SERVER, CONNECT_PORT))
