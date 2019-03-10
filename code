@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/repos/docker_vscoderun/client.py $(pwd)/$1

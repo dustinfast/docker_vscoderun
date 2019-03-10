@@ -5,12 +5,16 @@
     opened there in VSCode.
 """
 
+import os
 import sys
 import socket
 
 SERVER = '10.0.0.145'   # TCP Server
 CONNECT_PORT = 5001     # TCP Listen port
 MSG_SIZE = 1024         # TCP Msg Size
+
+print(os.path.dirname(os.path.realpath(__file__)))
+exit()
 
 if __name__ == '__main__':
     # Validate single command line arg
